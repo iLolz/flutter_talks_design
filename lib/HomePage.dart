@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_talks_design/HomeCard.dart';
 import 'package:flutter_talks_design/LoginScreen.dart';
-import 'package:url_launcher/url_launcher.dart';
+import 'package:flutter_talks_design/NewPost.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -16,6 +16,11 @@ class _MyHomePageState extends State<StatefulWidget> {
   String autor = "Alencar A. Moreira";
   String title = "Iniciando com Flutter";
   String code = "0293";
+
+  @override
+  void initState() {
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -44,49 +49,52 @@ class _MyHomePageState extends State<StatefulWidget> {
         elevation: 1.0,
         brightness: Brightness.light,
       ),
-      body: Container(
-        width: MediaQuery.of(context).size.width,
-        height: MediaQuery.of(context).size.height,
-        decoration: BoxDecoration(color: Colors.white70),
-        child: SingleChildScrollView(
-          child: Column(
-            children: <Widget>[
-              HomeCard(
+      floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.add),
+        backgroundColor: Colors.purple,
+        onPressed: () {
+          Navigator.push(context,
+              MaterialPageRoute(builder: (BuildContext context) => NewPost()));
+        },
+      ),
+      body: SingleChildScrollView(
+        child: Column(
+          children: <Widget>[
+            HomeCard(
+              title: title,
+              autor: autor,
+              text: texto,
+              link: code,
+              home: true,
+            ),
+            HomeCard(
                 title: title,
                 autor: autor,
                 text: texto,
                 link: code,
-                home: true,
-              ),
-              HomeCard(
-                  title: title,
-                  autor: autor,
-                  text: texto,
-                  link: code,
-                  home: true),
-              HomeCard(
-                title: title,
-                autor: autor,
-                text: texto,
-                link: code,
-                home: true,
-              ),
-              HomeCard(
-                title: title,
-                autor: autor,
-                text: texto,
-                link: code,
-                home: true,
-              ),
-              HomeCard(
-                title: title,
-                autor: autor,
-                text: texto,
-                link: code,
-                home: true,
-              ),
-            ],
-          ),
+                home: true),
+            HomeCard(
+              title: title,
+              autor: autor,
+              text: texto,
+              link: code,
+              home: true,
+            ),
+            HomeCard(
+              title: title,
+              autor: autor,
+              text: texto,
+              link: code,
+              home: true,
+            ),
+            HomeCard(
+              title: title,
+              autor: autor,
+              text: texto,
+              link: code,
+              home: true,
+            ),
+          ],
         ),
       ),
     );

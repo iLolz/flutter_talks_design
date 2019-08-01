@@ -11,8 +11,15 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<StatefulWidget> {
-  TextEditingController _EmailEditingController = TextEditingController();
-  TextEditingController _PasswordEditingController = TextEditingController();
+
+  TextEditingController _emailEditingController = TextEditingController();
+  TextEditingController _passwordEditingController = TextEditingController();
+
+  @override
+  void initState() {
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -46,7 +53,7 @@ class _LoginScreenState extends State<StatefulWidget> {
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: TextFormField(
-                    controller: _EmailEditingController,
+                    controller: _emailEditingController,
                     keyboardType: TextInputType.text,
                     decoration: InputDecoration(
                       labelText: "E-mail",
@@ -65,7 +72,7 @@ class _LoginScreenState extends State<StatefulWidget> {
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: TextFormField(
-                    controller: _PasswordEditingController,
+                    controller: _passwordEditingController,
                     obscureText: true,
                     keyboardType: TextInputType.text,
                     decoration: InputDecoration(

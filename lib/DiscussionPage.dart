@@ -34,59 +34,67 @@ class _DiscussionPageState extends State<StatefulWidget> {
           title: Text(
             "GrapeForum",
             style: TextStyle(
-                color: Colors.purpleAccent, fontWeight: FontWeight.w200),
+                color: Colors.purpleAccent, fontWeight: FontWeight.w300),
           ),
           backgroundColor: Colors.white,
           elevation: 1.0,
           brightness: Brightness.light,
         ),
-        bottomNavigationBar: Container(
-          width: MediaQuery.of(context).size.width,
-          height: MediaQuery.of(context).size.height * 0.1,
-          child: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: TextField(
-              controller: _textEditingController,
-              cursorColor: Colors.purpleAccent,
-              autocorrect: true,
-              autofocus: true,
-              decoration: InputDecoration(
-                focusColor: Colors.purpleAccent,
-                  fillColor: Colors.white70,
-                  filled: true,
-                  hintText: "Comentar",
-                  suffixIcon: IconButton(
-                      icon: Icon(
-                        Icons.send,
-                        color: Colors.purpleAccent,
-                      ),
-                      onPressed: null)),
+        body: Stack(
+          children: <Widget>[
+            SingleChildScrollView(
+              child: Column(
+                children: <Widget>[
+                  HomeCard(
+                      title: title,
+                      autor: autor,
+                      text: texto,
+                      link: code,
+                      home: false),
+                  CommentCard(),
+                  CommentCard(),
+                  CommentCard(),
+                  CommentCard(),
+                  CommentCard(),
+                  CommentCard(),
+                  CommentCard(),
+                  CommentCard(),
+                  CommentCard(),
+                  CommentCard(),
+                  CommentCard(),
+                  CommentCard(),
+                ],
+              ),
             ),
-          ),
-        ),
-        body: SingleChildScrollView(
-          child: Column(
-            children: <Widget>[
-              HomeCard(
-                  title: title,
-                  autor: autor,
-                  text: texto,
-                  link: code,
-                  home: false),
-              CommentCard(),
-              CommentCard(),
-              CommentCard(),
-              CommentCard(),
-              CommentCard(),
-              CommentCard(),
-              CommentCard(),
-              CommentCard(),
-              CommentCard(),
-              CommentCard(),
-              CommentCard(),
-              CommentCard(),
-            ],
-          ),
+            new Positioned(
+              bottom: 0.0,
+              left: 0.0,
+              child: Container(
+                decoration: BoxDecoration(color: Colors.white70),
+                width: MediaQuery.of(context).size.width,
+                height: MediaQuery.of(context).size.height * 0.1,
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: TextField(
+                    controller: _textEditingController,
+                    cursorColor: Colors.purpleAccent,
+                    autocorrect: true,
+                    decoration: InputDecoration(
+                        focusColor: Colors.purpleAccent,
+                        fillColor: Colors.white70,
+                        filled: true,
+                        hintText: "Comentar",
+                        suffixIcon: IconButton(
+                            icon: Icon(
+                              Icons.send,
+                              color: Colors.purpleAccent,
+                            ),
+                            onPressed: null)),
+                  ),
+                ),
+              ),
+            )
+          ],
         ));
   }
 }

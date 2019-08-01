@@ -8,14 +8,19 @@ class RecoveryAccount extends StatefulWidget {
 }
 
 class _RecoveryAccountState extends State<StatefulWidget> {
-  TextEditingController _EmailEditingController = TextEditingController();
+  TextEditingController _emailEditingController = TextEditingController();
 
-  GlobalKey<ScaffoldState> _ScaffoldKey = GlobalKey<ScaffoldState>();
+  GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+
+  @override
+  void initState() {
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      key: _ScaffoldKey,
+      key: _scaffoldKey,
       appBar: AppBar(
         backgroundColor: Colors.white,
         leading: BackButton(
@@ -32,7 +37,7 @@ class _RecoveryAccountState extends State<StatefulWidget> {
         padding: const EdgeInsets.all(16.0),
         child: FlatButton(
             onPressed: () {
-              _ScaffoldKey.currentState.showSnackBar(
+              _scaffoldKey.currentState.showSnackBar(
                   SnackBar(content: Text("E-mail de recuperação enviado")));
             },
             shape: RoundedRectangleBorder(
@@ -66,7 +71,7 @@ class _RecoveryAccountState extends State<StatefulWidget> {
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: TextFormField(
-              controller: _EmailEditingController,
+              controller: _emailEditingController,
               keyboardType: TextInputType.text,
               decoration: InputDecoration(
                 labelText: "E-mail",

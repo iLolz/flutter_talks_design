@@ -23,10 +23,11 @@ class _HomeCardState extends State<StatefulWidget> {
   final text;
   final link;
   final home;
+  String resumo;
+
 
   _HomeCardState(this.title, this.autor, this.text, this.link, this.home);
 
-  String resumo;
   @override
   void initState() {
     home ? resumo = text.toString().substring(0, 100) : resumo = text;
