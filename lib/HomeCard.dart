@@ -6,14 +6,12 @@ class HomeCard extends StatefulWidget {
   final title;
   final autor;
   final text;
-  final link;
-  final home;
 
-  HomeCard({this.title, this.autor, this.text, this.link, this.home});
+  HomeCard({this.title, this.autor, this.text,});
 
   @override
   State<StatefulWidget> createState() {
-    return _HomeCardState(title, autor, text, link, home);
+    return _HomeCardState(title, autor, text);
   }
 }
 
@@ -21,56 +19,37 @@ class _HomeCardState extends State<StatefulWidget> {
   final title;
   final autor;
   final text;
-  final link;
-  final home;
-  String resumo;
 
 
-  _HomeCardState(this.title, this.autor, this.text, this.link, this.home);
-
-  @override
-  void initState() {
-    home ? resumo = text.toString().substring(0, 100) : resumo = text;
-    super.initState();
-  }
+  _HomeCardState(this.title, this.autor, this.text);
 
   @override
   Widget build(BuildContext context) {
-    return FlatButton(
-      padding: EdgeInsets.all(0.0),
-      onPressed: () {
-        home?
-        Navigator.push(
-            context,
-            MaterialPageRoute(
-                builder: (BuildContext context) => DiscussionPage())) : true;
-      },
-      child: Card(
-        shape:
-            RoundedRectangleBorder(borderRadius: BorderRadius.circular(12.0)),
-        child: Column(
-          children: <Widget>[
-            ListTile(
-              title: Text(
-                "$title",
-                style: TextStyle(fontWeight: FontWeight.bold),
-              ),
-              subtitle: Text("Autor: $autor"),
-              trailing: IconButton(
-                  icon: Icon(
-                    Icons.share,
-                  ),
-                  onPressed: () {
-                    _launchUrl();
-                  }),
+    return Card(
+      shape:
+          RoundedRectangleBorder(borderRadius: BorderRadius.circular(12.0)),
+      child: Column(
+        children: <Widget>[
+          ListTile(
+            title: Text(
+              "$title",
+              style: TextStyle(fontWeight: FontWeight.bold),
             ),
-            Divider(),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Text("$resumo..."),
-            ),
-          ],
-        ),
+            subtitle: Text("Autor: $autor"),
+            trailing: IconButton(
+                icon: Icon(
+                  Icons.share,
+                ),
+                onPressed: () {
+                  _launchUrl();
+                }),
+          ),
+          Divider(),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Text("${text.substring(0,100)}..."),
+          ),
+        ],
       ),
     );
   }

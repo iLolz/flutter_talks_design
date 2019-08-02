@@ -11,7 +11,6 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<StatefulWidget> {
-
   TextEditingController _emailEditingController = TextEditingController();
   TextEditingController _passwordEditingController = TextEditingController();
 
@@ -31,20 +30,31 @@ class _LoginScreenState extends State<StatefulWidget> {
           children: <Widget>[
             Column(
               children: <Widget>[
+                Container(
+                  width: MediaQuery.of(context).size.height*0.3,
+                  height: MediaQuery.of(context).size.height*0.3,
+                  child: ClipRRect(
+                    
+                    borderRadius: BorderRadius.circular(180.0),
+                      child: Image.asset(
+                        "images/Grape-logo.png",
+                        fit: BoxFit.cover,
+                      )),
+                ),
                 Text(
                   "Grape       ",
                   textAlign: TextAlign.left,
                   style: TextStyle(
                       color: Colors.purpleAccent,
                       fontWeight: FontWeight.w100,
-                      fontSize: MediaQuery.of(context).size.width / 8),
+                      fontSize: MediaQuery.of(context).size.width / 13),
                 ),
                 Text(
                   "       Fórum",
                   style: TextStyle(
                       color: Colors.purpleAccent,
                       fontWeight: FontWeight.w100,
-                      fontSize: MediaQuery.of(context).size.width / 10),
+                      fontSize: MediaQuery.of(context).size.width / 15),
                 ),
               ],
             ),

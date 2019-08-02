@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_talks_design/CommentCard.dart';
 import 'package:flutter_talks_design/HomeCard.dart';
+import 'Estruturas/Estruturas.dart';
 
 class DiscussionPage extends StatefulWidget {
   @override
@@ -10,16 +11,22 @@ class DiscussionPage extends StatefulWidget {
 }
 
 class _DiscussionPageState extends State<StatefulWidget> {
-  String texto =
+
+List<Comentario> comentarios = List<Comentario>();
+Comentario comentario = Comentario();
+
+String texto =
       "Quando estava no 6º período de Engenharia de Computação um amigo me indicou que aprendesse Flutter, o Framework ainda não havia sido apresentado ao mercado oficialmente, totalmente movido pela comunidade aquela altura! Nessa época só havia trabalhado com desenvolvimentos nas atividades académicas, apenas com C++ e sem Front-end, tudo no prompt, o que confesso me deu pouco background para desenvolver um aplicação, mesmo sendo entusiasta de dispositivos móveis, esse foi meu inicio como desenvolvedor mobile, nesse texto vou contar como foi meu aprendizado do Flutter, esse framework maravilhoso da Google!";
   String autor = "Alencar A. Moreira";
   String title = "Iniciando com Flutter";
   String code = "code";
-
+  
   TextEditingController _textEditingController = TextEditingController();
 
   @override
   void initState() {
+    comentario.autor = "alencar";
+
     super.initState();
   }
 
@@ -48,9 +55,7 @@ class _DiscussionPageState extends State<StatefulWidget> {
                   HomeCard(
                       title: title,
                       autor: autor,
-                      text: texto,
-                      link: code,
-                      home: false),
+                      text: texto,),
                   CommentCard(),
                   CommentCard(),
                   CommentCard(),
