@@ -11,22 +11,33 @@ class DiscussionPage extends StatefulWidget {
 }
 
 class _DiscussionPageState extends State<StatefulWidget> {
+  List<Comentario> comentarios = List<Comentario>();
 
-List<Comentario> comentarios = List<Comentario>();
-Comentario comentario = Comentario();
+  Comentario comentario = Comentario();
+  String texto;
+  String autor;
+  String title;
 
-String texto =
-      "Quando estava no 6º período de Engenharia de Computação um amigo me indicou que aprendesse Flutter, o Framework ainda não havia sido apresentado ao mercado oficialmente, totalmente movido pela comunidade aquela altura! Nessa época só havia trabalhado com desenvolvimentos nas atividades académicas, apenas com C++ e sem Front-end, tudo no prompt, o que confesso me deu pouco background para desenvolver um aplicação, mesmo sendo entusiasta de dispositivos móveis, esse foi meu inicio como desenvolvedor mobile, nesse texto vou contar como foi meu aprendizado do Flutter, esse framework maravilhoso da Google!";
-  String autor = "Alencar A. Moreira";
-  String title = "Iniciando com Flutter";
-  String code = "code";
-  
+  inicia() {
+    texto =
+        "Quando estava no 6º período de Engenharia de Computação um amigo me indicou que aprendesse Flutter, o Framework ainda não havia sido apresentado ao mercado oficialmente, totalmente movido pela comunidade aquela altura! Nessa época só havia trabalhado com desenvolvimentos nas atividades académicas, apenas com C++ e sem Front-end, tudo no prompt, o que confesso me deu pouco background para desenvolver um aplicação, mesmo sendo entusiasta de dispositivos móveis, esse foi meu inicio como desenvolvedor mobile, nesse texto vou contar como foi meu aprendizado do Flutter, esse framework maravilhoso da Google!";
+    autor = "Alencar A. Moreira";
+    title = "Iniciando com Flutter";
+
+    comentario.autor = "Gabriel";
+    comentario.texto = "Parabéns cara, continue sua caminhada!";
+
+    for (int i = 0; i > 5; i++) {
+      comentarios.add(comentario);
+    }
+  }
+
   TextEditingController _textEditingController = TextEditingController();
 
+  List<Comentario> lista = List<Comentario>();
   @override
   void initState() {
-    comentario.autor = "alencar";
-
+    inicia();
     super.initState();
   }
 
@@ -49,26 +60,25 @@ String texto =
         ),
         body: Stack(
           children: <Widget>[
-            SingleChildScrollView(
-              child: Column(
-                children: <Widget>[
-                  HomeCard(
+            Container(
+              height: MediaQuery.of(context).size.height,
+              child: SingleChildScrollView(
+                child: Column(
+                  children: <Widget>[
+                    HomeCard(
                       title: title,
                       autor: autor,
-                      text: texto,),
-                  CommentCard(),
-                  CommentCard(),
-                  CommentCard(),
-                  CommentCard(),
-                  CommentCard(),
-                  CommentCard(),
-                  CommentCard(),
-                  CommentCard(),
-                  CommentCard(),
-                  CommentCard(),
-                  CommentCard(),
-                  CommentCard(),
-                ],
+                      text: texto,
+                    ),
+                    Column(
+                      children: comentarios
+                          .map((item) => CommentCard(
+                                comentario: item,
+                              ))
+                          .toList(),
+                    ),
+                  ],
+                ),
               ),
             ),
             new Positioned(
@@ -94,7 +104,16 @@ String texto =
                               Icons.send,
                               color: Colors.purpleAccent,
                             ),
-                            onPressed: null)),
+                            onPressed: () {
+                              Comentario comentario1 = Comentario();
+
+                              comentario1.autor = "Gabriel";
+                              comentario1.texto =
+                                  _textEditingController.text.toString();
+
+                              comentarios.add(comentario1);
+                              setState(() {});
+                            })),
                   ),
                 ),
               ),

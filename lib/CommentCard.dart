@@ -1,13 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_talks_design/Estruturas/Estruturas.dart';
 
 class CommentCard extends StatefulWidget {
+  final Comentario comentario;
+
+  const CommentCard({Key key, this.comentario}) : super(key: key);
   @override
   State<StatefulWidget> createState() {
-    return _CommentCardState();
+    return _CommentCardState(comentario);
   }
 }
 
-class _CommentCardState extends State < StatefulWidget> {
+class _CommentCardState extends State<StatefulWidget> {
+  final Comentario comentario;
+
+  _CommentCardState(this.comentario);
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -15,8 +22,8 @@ class _CommentCardState extends State < StatefulWidget> {
       child: Padding(
         padding: const EdgeInsets.all(8.0),
         child: ListTile(
-          title: Text("Autor"),
-          subtitle: Text("Amazing text guy you areth da n;fa d fkna ;ad nfa dlna; ldnfa lfns; dfnasd ;nfa lknas"),
+          title: Text("${comentario.texto}"),
+          subtitle: Text("${comentario.autor}"),
         ),
       ),
     );

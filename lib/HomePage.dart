@@ -13,7 +13,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<StatefulWidget> {
-  List<Texto> list = List<Texto>();
+  final List<Texto> list = List<Texto>();
 
   populaList() {
     Texto texto = Texto();
